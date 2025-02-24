@@ -1,0 +1,106 @@
+return {
+  "nvim-tree/nvim-tree.lua",
+  version = "*",
+  lazy = false,
+  keys = {
+    { "<leader>fe", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Tree" },
+  },
+  opts = {
+    sort = {
+      sorter = "case_sensitive",
+    },
+    view = {
+      width = 30,
+      side = "right",
+    },
+    update_focused_file = {
+      enable = true,
+    },
+    renderer = {
+      group_empty = false,
+      root_folder_label = false,
+      highlight_git = true,
+      special_files = {},
+      icons = {
+        git_placement = "after",
+        modified_placement = "after",
+        diagnostics_placement = "after",
+        show = {
+          folder_arrow = false,
+        },
+        glyphs = {
+          default = "",
+          symlink = "",
+          folder = {
+            arrow_closed = "", -- Closed folder arrow
+            arrow_open = "", -- Open folder arrow
+            default = "", -- Default folder
+            open = "", -- Open folder
+            empty = "", -- Empty folder
+            empty_open = "", -- Open empty folder
+            symlink = "", -- Symlink folder
+            symlink_open = "", -- Open symlink folder
+          },
+          git = {
+            unstaged = "",
+            staged = "",
+            unmerged = "",
+            renamed = "󰁕",
+            untracked = "",
+            deleted = "",
+            ignored = "",
+          },
+        },
+      },
+      indent_markers = {
+        enable = true,
+        inline_arrows = true,
+      },
+    },
+    filters = {
+      git_ignored = false,
+      dotfiles = true,
+    },
+  },
+  config = function(_, options)
+    local function my_on_attach(bufnr)
+      local api = require("nvim-tree.api")
+
+      local function opts(desc)
+        return {
+          desc = "nvim-tree: " .. desc,
+          buffer = bufnr,
+          noremap = true,
+          silent = true,
+          nowait = true,
+        }
+      end
+
+      -- default mappings
+      api.config.mappings.default_on_attach(bufnr)
+
+      -- custom mappings
+      vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+      vim.keymap.set("n", "<C-s>", api.node.open.vertical, opts("Open: Vertical Split"))
+      vim.keymap.set("n", "<C-h>", api.tree.toggle_hidden_filter, opts("Toggle: Hidden Files"))
+
+      -- remove default mappings
+      vim.keymap.del("n", "<S-h>", { buffer = bufnr })
+      vim.keymap.del("n", "L", { buffer = bufnr })
+      vim.keymap.del("n", "<C-t>", { buffer = bufnr })
+    end
+
+    options.on_attach = my_on_attach
+
+    require("nvim-tree").setup(options)
+
+    require("transparent").clear_prefix("NvimTree")
+
+    -- closes nvim-tree if it's the last open buffer
+    vim.api.nvim_create_autocmd({ "QuitPre" }, {
+      callback = function()
+        vim.cmd("NvimTreeClose")
+      end,
+    })
+  end,
+}
