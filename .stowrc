@@ -1,4 +1,6 @@
 --target=~/.config
+--ignore=assets
+--ignore=docs
 --ignore=.stowrc
 --ignore=install.sh
 --ignore=.zshrc

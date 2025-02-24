@@ -1,4 +1,4 @@
-# NeoVim configuration for Golang
+# Modern NeoVim configuration with full battery for Golang development
 
 ## Introduction
 
@@ -9,6 +9,10 @@ My configuration are heavily documented to make as clear as possible.
 While you can clone the whole repository and use it, it is not recommended though.
 Good configurations are personal.
 Everyone should have his or her unique configuration.
+
+## Install and setup
+
+See [docs](docs/README.md) on how to install dependencies and NeoVim itself.
 
 ## Features
 
@@ -54,12 +58,20 @@ Everyone should have his or her unique configuration.
     - vimdoc
     - xml
     - yaml
-- Code, snippet, word auto-completion via -  [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
+- Code, snippet, word auto-completion via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
     ![nvim-cmp](assets/nvim-cmp.png)
 - Language server protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
     ![nvim-lspconfig](assets/nvim-lspconfig.png)
+    Enabled by default for:
+    - Lua
+    - Golang
+    - JavaScript/TypeScript
 - Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
     ![git-integration](assets/git-integration.png)
+- File tree explorer via [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua).
+    ![nvim-tree](assets/nvim-tree.png)
+- User-defined mapping hint via [which-key.nvim](https://github.com/folke/which-key.nvim).
+    ![which-key](assets/which-key.png)
 - Fast buffer jump via [flash.nvim](https://github.com/folke/flash.nvim).
     ![buffer-jump](assets/buffer-jump.png)
 - Faster matching pair insertion and jump via [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
@@ -70,7 +82,7 @@ Everyone should have his or her unique configuration.
     ![hlslens](assets/hlslens.png)
 - Code folding with [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) and [statuscol.nvim](https://github.com/kdheepak/statuscol.nvim).
     ![code-folding](assets/code-folding.png)
-- ........
+- Beautiful colorscheme via [tokyonight.nvim](https://github.com/folke/tokyonight.nvim).
 
 ## Core
 
