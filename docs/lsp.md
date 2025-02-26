@@ -56,11 +56,27 @@ JavaScript/Typescript support:
 
 ### Svelte
 
-Coming soon...
+Svelte support:
+
+![svelte-lsp](../assets/svelte-lsp.png)
+
+You should install this plugin for typescript:
+
+```bash
+npm i -g typescript-svelte-plugin
+```
 
 ### Vue
 
-Coming soon...
+Vue support:
+
+![vue-lsp](../assets/vue-lsp.png)
+
+You should install this plugin for typescript:
+
+```bash
+npm i -g @vue/typescript-plugin
+```
 
 ## Configs
 
@@ -84,11 +100,7 @@ Json support:
 
 Xml support:
 
-![xml-lsp](../aseets/xml-lsp.png)
-
-### Toml
-
-Coming soon...
+![xml-lsp](../assets/xml-lsp.png)
 
 ## Protocols
 
@@ -102,7 +114,15 @@ Coming soon...
 
 ### ProtoBuf
 
-Coming soon...
+ProtoBuf support:
+
+![protobuf-lsp](../assets/protobuf-lsp.png)
+
+You should install this lsp manually:
+
+```bash
+go install github.com/lasorda/protobuf-language-server@latest
+```
 
 ## DevOps tools
 
@@ -112,16 +132,18 @@ Docker support:
 
 ![docker-lsp](../assets/docker-lsp.png)
 
-### Terraform
-
-Coming soon...
-
 ## Build tools
-
-### Makefile
-
-Coming soon...
 
 ### Bazel
 
-Coming soon...
+This build system often used when company need a monorepo.
+
+For more information see this links:
+
+- [Bazel Central Registry](https://registry.bazel.build/)
+- [Gazelle Module](https://registry.bazel.build/modules/gazelle)
+- [Rules Go](https://registry.bazel.build/modules/rules_go)
+
+Bazel support:
+
+![bazel-lsp](../assets/bazel-lsp.png)

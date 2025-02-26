@@ -55,6 +55,8 @@ return {
         "pyright", -- Python support
         "tailwindcss", -- Tailwind CSS support
         "ts_ls", -- Typescript support
+        "starpls", -- Bazel support
+        "volar", -- Vue support
         "yamlls", -- Yaml support
       }, -- Servers to install
       handlers = {
@@ -74,6 +76,17 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {}, -- Tools to install
     })
+
+    -- Custom protobuf language server
+    require("lspconfig.configs").protobuf_language_server = {
+      default_config = {
+        cmd = { "protobuf-language-server" },
+        filetypes = { "proto" },
+        root_dir = require("lspconfig.util").root_pattern(".git"),
+        single_file_support = true,
+      },
+    }
+    require("lspconfig").protobuf_language_server.setup({})
 
     -- Schemastore for jsonls
     local schemastore = require("schemastore")

@@ -16,7 +16,19 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	opts = {
-		settings = {
+     filetypes = {
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+      'vue',
+      'svelte',
+    },
+    settings = {
+       tsserver_plugins = {
+        "typescript-svelte-plugin", -- Svelte support
+        "@vue/typescript-plugin", -- Vue support
+      },
 			tsserver_file_preferences = {
 				includeInlayParameterNameHints = "all",
 				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
