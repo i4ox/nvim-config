@@ -3,14 +3,20 @@ return {
 	dependencies = {
 		{ "L3MON4D3/LuaSnip", version = "2.*", build = "make install_jsregexp" },
 		{ "onsails/lspkind-nvim" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
 	},
 	config = function()
 		local cmp = require("cmp")
 
 		cmp.setup({
-			sources = {
+			sources = cmp.config.sources({
+        { name = "lazydev" },
 				{ name = "nvim_lsp" },
-			},
+        { name = "path" },
+			}, {
+        { name = "buffer", keyword_length = 3 },
+      }),
 			sorting = {
 				comparators = {
 					cmp.config.compare.offset,

@@ -15,6 +15,7 @@ return {
     { "williamboman/mason-lspconfig.nvim" },
     { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     { "someone-stole-my-name/yaml-companion.nvim" },
+    { "b0o/schemastore.nvim" },
   },
   build = ":MasonUpdate",
   config = function()
@@ -40,12 +41,21 @@ return {
     mason_lspconfig.setup({
       automatic_installation = false,
       ensure_installed = {
-        -- "asm-lsp",
-        "ts_ls", -- Typescript support
+        "bashls", -- Bash support
+        "cssls", -- CSS support
+        "css_variables", -- CSS Variables support
+        "cssmodules_ls", -- CSS Modules support
+        "dockerls", -- Docker support
         "gopls", -- Golang support
+        "html", -- HTML support
+        "jsonls", -- JSON support
+        "lemminx", -- XML support
         "lua_ls", -- Lua support
+        "marksman", -- Markdown support
+        "pyright", -- Python support
+        "tailwindcss", -- Tailwind CSS support
+        "ts_ls", -- Typescript support
         "yamlls", -- Yaml support
-        "templ", -- Golang Templates support
       }, -- Servers to install
       handlers = {
         function(server_name)
@@ -65,6 +75,18 @@ return {
       ensure_installed = {}, -- Tools to install
     })
 
+    -- Schemastore for jsonls
+    local schemastore = require("schemastore")
+    require("lspconfig").jsonls.setup({
+      settings = {
+        json = {
+          schemas = schemastore.json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    })
+
+    -- Add Kubernetes and other schemas support for yamlls
     local yaml_companion = require("yaml-companion").setup({})
     require("lspconfig").yamlls.setup(vim.tbl_deep_extend("force", yaml_companion, {
       capabilities = {

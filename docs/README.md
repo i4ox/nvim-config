@@ -17,6 +17,10 @@ I also can recommend:
 - [iTerm2](https://iterm2.com/)
 - [WezTerm](https://wezfurlong.org/wezterm/)
 
+### Terminal configuration
+
+See [this](terminal.md) on how to setup your terminal.
+
 ## Patched fonts
 
 Since statusline or file explorer plugins often use Unicode symbols not available in normal font, we need to install a patched font from the [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) project.
