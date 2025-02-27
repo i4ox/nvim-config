@@ -98,7 +98,6 @@ And other features:
 
 - [ ] Linter
 - [ ] Formatter
-- [ ] REST client
 - [ ] Debugger support
 - [ ] Database manager 
 - [ ] Go tools
@@ -110,12 +109,10 @@ And other features:
 
 ## Extra plans
 
-- [ ] Golang templates support
 - [ ] Pprof integration
 - [ ] Profiler integration
 - [ ] Recursive call detection
 - [ ] DevContainers
 - [ ] Tests runner && Code coverage
 - [ ] Code generation
-- [ ] GraphQL client
 

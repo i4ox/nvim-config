@@ -10,11 +10,7 @@ Go support:
 
 Go templates support:
 
-Coming soon...
-
-Go assembler support:
-
-Coming soon...
+![templ-lsp](../assets/templ-lsp.png)
 
 ### Python
 
@@ -104,13 +100,11 @@ Xml support:
 
 ## Protocols
 
-### HTTP
-
-Coming soon...
-
 ### GraphQL
 
-Coming soon...
+GraphQL support:
+
+![graphql-lsp](../assets/graphql-lsp.png)
 
 ### ProtoBuf
 

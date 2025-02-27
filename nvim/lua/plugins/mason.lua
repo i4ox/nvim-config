@@ -45,6 +45,7 @@ return {
         "cssls", -- CSS support
         "dockerls", -- Docker support
         "gopls", -- Golang support
+        "graphql", -- GraphQL support
         "html", -- HTML support
         "jsonls", -- JSON support
         "lemminx", -- XML support
@@ -52,6 +53,7 @@ return {
         "marksman", -- Markdown support
         "pyright", -- Python support
         "tailwindcss", -- Tailwind CSS support
+        "templ", -- Go templates support
         "ts_ls", -- Typescript support
         "starpls", -- Bazel support
         "volar", -- Vue support
