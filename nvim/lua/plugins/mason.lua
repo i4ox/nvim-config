@@ -43,8 +43,6 @@ return {
       ensure_installed = {
         "bashls", -- Bash support
         "cssls", -- CSS support
-        "css_variables", -- CSS Variables support
-        "cssmodules_ls", -- CSS Modules support
         "dockerls", -- Docker support
         "gopls", -- Golang support
         "html", -- HTML support
@@ -111,5 +109,22 @@ return {
         },
       },
     }))
+
+    -- Add inlay hints for Go
+    require("lspconfig").gopls.setup({
+			settings = {
+				gopls = {
+					hints = {
+						rangeVariableTypes = true,
+						parameterNames = true,
+						constantValues = true,
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						functionTypeParameters = true,
+					},
+				},
+			},
+		})
   end,
 }

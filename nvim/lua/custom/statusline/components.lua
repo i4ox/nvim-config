@@ -18,6 +18,14 @@ function M.get_branch_component()
   return " No branch"
 end
 
+function M.get_yaml_schema_component()
+  local schema = require("yaml-companion").get_buf_schema(0)
+  if schema.result[1].name == "none" then
+    return ""
+  end
+  return schema.result[1].name
+end
+
 function M.get_warnings_component()
   local warning_count = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
   return warning_count > 0 and ("%#StatusWarning#" .. warning_count .. "%#Normal#") or ""

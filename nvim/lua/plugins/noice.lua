@@ -1,6 +1,10 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
+  dependencies = {
+    { "rcarriga/nvim-notify" },
+    { "MunifTanjim/nui.nvim" },
+  },
   opts = {
     presets = {
       bottom_search = true,
@@ -8,6 +12,17 @@ return {
       long_message_to_split = true,
       inc_rename = false,
       lsp_doc_border = true, -- TODO: add borders to lsp docs
+    },
+    routes = {
+      {
+        filter = {
+          event = "notify",
+          find = "No information available",
+        },
+        opts = {
+          skip = true,
+        },
+      }
     },
     cmdline = {
       enabled = true,
@@ -59,7 +74,7 @@ return {
         },
         hover = {
           enabled = true,
-          silent = false,
+          silent = true,
           view = nil,
           opts = {},
         },
@@ -89,31 +104,24 @@ return {
             win_options = { concealcursor = "n", conceallevel = 3 },
           },
         },
-      },
-      markdown = {
-        hover = {
-          ["|(%S-)|"] = vim.cmd.help,
-        },
-        highlights = {
-          ["|%S-|"] = "@text.reference",
-          ["@%S+"] = "@parameter",
-          ["^%s*(Parameters:)"] = "@text.title",
-          ["^%s*(Return:)"] = "@text.title",
-          ["^%s*(See also:)"] = "@text.title",
-          ["{%S-}"] = "@parameter",
-        },
-      },
-      health = {
-        checker = true,
-      },
-      throttle = 1000 / 30,
-      views = {},
-      routes = {},
-      status = {},
-      format = {},
+      }
     },
+    markdown = {
+      hover = {
+        ["|(%S-)|"] = vim.cmd.help,
+      },
+      highlights = {
+        ["|%S-|"] = "@text.reference",
+        ["@%S+"] = "@parameter",
+        ["^%s*(Parameters:)"] = "@text.title",
+        ["^%s*(Return:)"] = "@text.title",
+        ["^%s*(See also:)"] = "@text.title",
+        ["{%S-}"] = "@parameter",
+      },
+    },
+    health = {
+      checker = true,
+    },
+    throttle = 1000 / 30,
   },
-  config = function(_, opts)
-    require("noice").setup(opts)
-  end,
 }

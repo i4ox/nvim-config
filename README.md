@@ -41,6 +41,8 @@ See [docs](docs/README.md) on how to install dependencies and NeoVim itself.
     ![hlslens](assets/hlslens.png)
 - Code folding with [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) and [statuscol.nvim](https://github.com/kdheepak/statuscol.nvim).
     ![code-folding](assets/code-folding.png)
+- Colorizer via [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua).
+    ![colorizer](assets/colorizer.png)
 
 And other features:
 
@@ -94,8 +96,8 @@ And other features:
 
 ## Core
 
-- [ ] Inlay hints
-- [ ] Colorizer
+- [ ] Linter
+- [ ] Formatter
 - [ ] REST client
 - [ ] Debugger support
 - [ ] Database manager 
@@ -114,7 +116,6 @@ And other features:
 - [ ] Recursive call detection
 - [ ] DevContainers
 - [ ] Tests runner && Code coverage
-- [ ] Code actions and idea-like refactoring
 - [ ] Code generation
 - [ ] GraphQL client
 

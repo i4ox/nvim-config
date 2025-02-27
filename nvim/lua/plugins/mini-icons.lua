@@ -12,9 +12,16 @@ return {
       file = {
         [".keep"] = { glyph = "", hl = "MiniIconsGrey" },
         ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+        ["go.mod"] = { glyph = "", hl = "MiniIconsBlue" },
+				["go.sum"] = { glyph = "", hl = "MiniIconsBlue" },
       },
       filetype = {
         dotenv = { glyph = "", hl = "MiniIconsYellow" },
+        markdown = { glyph = "", hl = "MiniIconsBlue" },
+        sql = { glyph = "󰆼", hl = "MiniIconsRed" },
+        typescript = { glyph = "", hl = "MiniIconsBlue" },
+				javascript = { glyph = "", hl = "MiniIconsYellow" },
+				go = { glyph = "", hl = "MiniIconsBlue" },
       },
     }
   end,
