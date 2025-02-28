@@ -5,6 +5,7 @@ return {
 		{ "onsails/lspkind-nvim" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
+    { "petertriho/cmp-git" },
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -14,6 +15,7 @@ return {
         { name = "lazydev" },
 				{ name = "nvim_lsp" },
         { name = "path" },
+        { name = "git" },
 			}, {
         { name = "buffer", keyword_length = 3 },
       }),

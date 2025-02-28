@@ -100,6 +100,7 @@ keymap("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- Telescope
 keymap("n", "<leader>:", "<cmd>Telescope command_history<cr>", { desc = "Command History" })
+keymap("n", "<leader>fy", "<cmd>Telescope yaml_schema<cr>", { desc = "YAML Schemas" })
 -- find
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find File" })
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })

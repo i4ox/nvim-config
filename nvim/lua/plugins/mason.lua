@@ -74,7 +74,9 @@ return {
     })
 
     mason_tool_installer.setup({
-      ensure_installed = {}, -- Tools to install
+      ensure_installed = {
+        "hadolint", -- Dockerfile linter
+      }, -- Tools to install
     })
 
     -- Custom protobuf language server
@@ -102,6 +104,12 @@ return {
     -- Add Kubernetes and other schemas support for yamlls
     local yaml_companion = require("yaml-companion").setup({})
     require("lspconfig").yamlls.setup(vim.tbl_deep_extend("force", yaml_companion, {
+      settings = {
+        yaml = {
+          schemas = {},
+          validate = false, -- fix conflict with yaml_companion
+        },
+      },
       capabilities = {
         textDocument = {
           foldingRange = {

@@ -31,6 +31,7 @@ Since statusline or file explorer plugins often use Unicode symbols not availabl
 brew install bash # Update bash (otherwise tmux won't work correctly)
 brew install bat eza zoxide stow # Must-have cli tools
 brew install fzf ripgrep tmux cargo # Tools used alongside with NeoVim
+brew install lazygit lazydocker k9s # Tools used for development
 ```
 
 Also, we need to install [NeoVim](https://neovim.io/) itself.

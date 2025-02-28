@@ -43,6 +43,8 @@ See [docs](docs/README.md) on how to install dependencies and NeoVim itself.
     ![code-folding](assets/code-folding.png)
 - Colorizer via [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua).
     ![colorizer](assets/colorizer.png)
+- Float terminal integration via [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim).
+    ![float-terminal](assets/float-terminal.png)
 
 And other features:
 
@@ -94,15 +96,30 @@ And other features:
     - Markdown code blocks support
 - Tabs support via [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).
 
+## External tools
+
+With tmux you can use:
+
+- [lazygit](https://github.com/jesseduffield/lazygit) to interact with git repositories.
+- [lazydocker](https://github.com/jesseduffield/lazydocker) to interact with docker containers.
+- [k9s](https://github.com/derailed/k9s) to interact with kubernetes clusters.
+
+Because I sure this tools more comfortable and functional than I can reach with NeoVim plugins.
+And if you want only check some information and don't want to open extra tab inside tmux, I integrate ToggleTerm inside NeoVim.
+
+Also, I sure we should use external tools for work with REST API and databases instead of NeoVim plugins.
+
+For example, I use:
+
+- [Insomnia](https://insomnia.rest/) for REST API work.
+- [DBeaver](https://dbeaver.io/) for database work.
+
 ## Core
 
 - [ ] Linter
 - [ ] Formatter
 - [ ] Debugger support
-- [ ] Database manager 
 - [ ] Go tools
-- [ ] Kubernetes integration
-- [ ] Obsidian integration
 - [ ] Markdown support
 - [ ] LaTeX support
 - [ ] Images support
