@@ -82,7 +82,11 @@ return {
 				"goimports-reviser", -- Golang formatter for goimports
 				"golangci-lint", -- Golang linter
 				"markdownlint-cli2", -- Markdown linter
-				"prettier", -- Formatter for many languages
+				"prettierd", -- Formatter for many languages
+				"eslint_d", -- JavaScript linter
+				"yamllint", -- YAML linter
+				"yamlfmt", -- Formatter for YAML
+				"buildifier", -- Formatter for Bazel
 				-- Debuggers
 				"delve", -- Go debugger
 			},

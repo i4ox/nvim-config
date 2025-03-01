@@ -124,10 +124,29 @@ I use [delve](https://github.com/go-delve/delve) debugger for Go.
 I don't provide any other debuggers support, because I use Python only for scripting, and JS only for frontend.
 In my cases Python and JS don't need debuggers.
 
-## Core
+## Linting and formatting
 
-- [ ] Linter
-- [ ] Formatter
+I support linters for:
+
+- Go
+- Bazel
+- Dockefile
+- Markdown
+- JS/TS, Vue, Svelte
+- GraphQL
+- HTML, CSS, SCSS
+- JSON
+- YAML
+
+I support formatters for:
+
+- Go
+- Bazel
+- JS/TS, Vue, Svelte
+- GraphQL
+- HTML, CSS, SCSS
+- JSON
+- YAML
 
 ## Extra plans
 
