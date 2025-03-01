@@ -49,6 +49,8 @@ See [docs](docs/README.md) on how to install dependencies and NeoVim itself.
   ![float-terminal](assets/float-terminal.png)
 - Markdown and LaTeX support via [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim).
   ![markdown](assets/markdown.png)
+- Tests integration via [neotest](https://github.com/nvim-neotest/neotest).
+  ![tests](assets/tests.png)
 
 And other features:
 
@@ -147,9 +149,3 @@ I support formatters for:
 - HTML, CSS, SCSS
 - JSON
 - YAML
-
-## Extra plans
-
-- [ ] DevContainers
-- [ ] Test integration
-- [ ] Code coverage
