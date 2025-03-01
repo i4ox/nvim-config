@@ -128,8 +128,6 @@ In my cases Python and JS don't need debuggers.
 
 - [ ] Linter
 - [ ] Formatter
-- [ ] LaTeX support
-- [ ] Images support
 
 ## Extra plans
 
