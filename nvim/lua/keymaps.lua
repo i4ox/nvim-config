@@ -25,10 +25,10 @@ keymap("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 keymap("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 keymap("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 keymap("n", "<leader>bd", function()
-  Snacks.bufdelete()
+	Snacks.bufdelete()
 end, { desc = "Delete Buffer" })
 keymap("n", "<leader>bo", function()
-  Snacks.bufdelete.other()
+	Snacks.bufdelete.other()
 end, { desc = "Delete Other Buffers" })
 keymap("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
@@ -65,18 +65,18 @@ keymap("n", "<leader>y", "<cmd>%yank<cr>", { desc = "Yank entire buffer" })
 
 -- Location List
 keymap("n", "<leader>xl", function()
-  local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
-  if not success and err then
-    vim.notify(err, vim.log.levels.ERROR)
-  end
+	local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
+	if not success and err then
+		vim.notify(err, vim.log.levels.ERROR)
+	end
 end, { desc = "Location List" })
 
 -- Quickfix list
 keymap("n", "<leader>xq", function()
-  local success, err = pcall(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose or vim.cmd.copen)
-  if not success and err then
-    vim.notify(err, vim.log.levels.ERROR)
-  end
+	local success, err = pcall(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose or vim.cmd.copen)
+	if not success and err then
+		vim.notify(err, vim.log.levels.ERROR)
+	end
 end, { desc = "Quickfix List" })
 
 keymap("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
@@ -84,11 +84,11 @@ keymap("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- Diagnostic
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
-  return function()
-    go({ severity = severity })
-  end
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	severity = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity })
+	end
 end
 keymap("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 keymap("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -104,7 +104,12 @@ keymap("n", "<leader>fy", "<cmd>Telescope yaml_schema<cr>", { desc = "YAML Schem
 -- find
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find File" })
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live Grep" })
-keymap("n", "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>", { desc = "Buffers" })
+keymap(
+	"n",
+	"<leader>fb",
+	"<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
+	{ desc = "Buffers" }
+)
 keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Recent Files" })
 -- git
 keymap("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "Git Commits" })
@@ -123,7 +128,30 @@ keymap("n", "<leader>sl", "<cmd>Telescope loclist<cr>", { desc = "Loclist" })
 keymap("n", "<leader>sM", "<cmd>Telescope man_pages<cr>", { desc = "Man Pages" })
 keymap("n", "<leader>sm", "<cmd>Telescope marks<cr>", { desc = "Marks" })
 keymap("n", "<leader>sq", "<cmd>Telescope quickfix<cr>", { desc = "Quickfix" })
-keymap("n", "<leader>ss","<cmd>Namu symbols<cr>" , {
-  desc = "Jump to LSP symbol",
-  silent = true,
+keymap("n", "<leader>ss", "<cmd>Namu symbols<cr>", {
+	desc = "Jump to LSP symbol",
+	silent = true,
 })
+
+-- Debugger
+keymap("n", "<leader>dt", "<cmd>lua require('dapui').toggle()<cr>", { noremap = true, desc = "Toggle Debug Toolbar" })
+keymap("n", "<leader>db", "<cmd>DapToggleBreakpoint<cr>", { noremap = true, desc = "Toggle Breakpoint" })
+keymap("n", "<leader>dc", "<cmd>DapContinue<cr>", { noremap = true, desc = "Continue" })
+keymap("n", "<leader>dr", "<cmd>lua require('dapui').open({reset = true})<cr>", { noremap = true, desc = "Reset" })
+
+-- Hunks
+local gs = require("gitsigns")
+keymap({ "n", "v" }, "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "Stage Hunk" })
+keymap({ "n", "v" }, "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "Reset Hunk" })
+keymap("n", "<leader>ghS", gs.stage_buffer, { desc = "Stage Buffer" })
+keymap("n", "<leader>ghu", gs.undo_stage_hunk)
+keymap("n", "<leader>ghR", gs.reset_buffer, { desc = "Reset Buffer" })
+keymap("n", "<leader>ghp", gs.preview_hunk, { desc = "Preview Hunk" })
+keymap("n", "<leader>ghb", function()
+	gs.blame_line({ full = true })
+end, { desc = "Blame" })
+keymap("n", "<leader>gtB", gs.toggle_current_line_blame, { desc = "Toggle Blame" })
+keymap("n", "<leader>ghd", gs.diffthis, { desc = "Diff" })
+keymap("n", "<leader>ghD", function()
+	gs.diffthis("~")
+end, { desc = "Diff with Previous" })

@@ -1,12 +1,12 @@
 local border = {
-	{ "╭", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╮", "FloatBorder" },
-	{ "│", "FloatBorder" },
-	{ "╯", "FloatBorder" },
-	{ "─", "FloatBorder" },
-	{ "╰", "FloatBorder" },
-	{ "│", "FloatBorder" },
+  { "╭", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "╮", "FloatBorder" },
+  { "│", "FloatBorder" },
+  { "╯", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "╰", "FloatBorder" },
+  { "│", "FloatBorder" },
 }
 
 return {
@@ -21,7 +21,7 @@ return {
   config = function()
     local handlers = {
       ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
     }
 
     local mason = require("mason")
@@ -41,24 +41,24 @@ return {
     mason_lspconfig.setup({
       automatic_installation = false,
       ensure_installed = {
-        "bashls", -- Bash support
-        "cssls", -- CSS support
-        "dockerls", -- Docker support
-        "gopls", -- Golang support
-        "graphql", -- GraphQL support
-        "html", -- HTML support
-        "jsonls", -- JSON support
-        "lemminx", -- XML support
-        "lua_ls", -- Lua support
-        "marksman", -- Markdown support
-        "pyright", -- Python support
+        "bashls",      -- Bash support
+        "cssls",       -- CSS support
+        "dockerls",    -- Docker support
+        "gopls",       -- Golang support
+        "graphql",     -- GraphQL support
+        "html",        -- HTML support
+        "jsonls",      -- JSON support
+        "lemminx",     -- XML support
+        "lua_ls",      -- Lua support
+        "marksman",    -- Markdown support
+        "pyright",     -- Python support
         "tailwindcss", -- Tailwind CSS support
-        "templ", -- Go templates support
-        "ts_ls", -- Typescript support
-        "starpls", -- Bazel support
-        "volar", -- Vue support
-        "yamlls", -- Yaml support
-      }, -- Servers to install
+        "templ",       -- Go templates support
+        "ts_ls",       -- Typescript support
+        "starpls",     -- Bazel support
+        "volar",       -- Vue support
+        "yamlls",      -- Yaml support
+      },               -- Servers to install
       handlers = {
         function(server_name)
           -- TS server will be handled by typescript-tools.nvim
@@ -75,8 +75,15 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "hadolint", -- Dockerfile linter
-      }, -- Tools to install
+        -- Linters and formatters
+        "stylua",            -- Lua formatter
+        "hadolint",          -- Dockerfile linter
+        "gofumpt",           -- Golang formatter
+        "goimports-reviser", -- Golang formatter for goimports
+        "golangci-lint",     -- Golang linter
+        -- Debuggers
+        "delve",             -- Go debugger
+      },
     })
 
     -- Custom protobuf language server
@@ -122,19 +129,41 @@ return {
 
     -- Add inlay hints for Go
     require("lspconfig").gopls.setup({
-			settings = {
-				gopls = {
-					hints = {
-						rangeVariableTypes = true,
-						parameterNames = true,
-						constantValues = true,
-						assignVariableTypes = true,
-						compositeLiteralFields = true,
-						compositeLiteralTypes = true,
-						functionTypeParameters = true,
-					},
-				},
-			},
-		})
+      settings = {
+        gopls = {
+          gofumpt = true,
+          codelenses = {
+            gc_details = false,
+            generate = true,
+            regenerate_cgo = true,
+            run_govulncheck = true,
+            test = true,
+            tidy = true,
+            upgrade_dependency = true,
+            vendor = true,
+          },
+          hints = {
+            rangeVariableTypes = true,
+            parameterNames = true,
+            constantValues = true,
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            functionTypeParameters = true,
+          },
+          analyses = {
+            nilness = true,
+            unusedparams = true,
+            unusedwrite = true,
+            useany = true,
+          },
+          usePlaceholders = true,
+          completeUnimported = true,
+          staticcheck = true,
+          directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+          semanticTokens = true,
+        },
+      },
+    })
   end,
 }

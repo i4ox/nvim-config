@@ -25,6 +25,8 @@ See [docs](docs/README.md) on how to install dependencies and NeoVim itself.
 - Language server protocol (LSP) support via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
     More details in [docs/lsp.md](docs/lsp.md).
     ![nvim-lspconfig](assets/nvim-lspconfig.png)
+- Debug integration via [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui).
+    ![nvim-dap-ui](assets/nvim-dap-ui.png)
 - Git integration via [vim-fugitive](https://github.com/tpope/vim-fugitive).
     ![git-integration](assets/git-integration.png)
 - File tree explorer via [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua).
@@ -114,12 +116,17 @@ For example, I use:
 - [Insomnia](https://insomnia.rest/) for REST API work.
 - [DBeaver](https://dbeaver.io/) for database work.
 
+## Debugging
+
+I use [delve](https://github.com/go-delve/delve) debugger for Go.
+I don't provide any other debuggers support, because I use Python only for scripting, and JS only for frontend.
+In my cases Python and JS don't need debuggers.
+
 ## Core
 
 - [ ] Linter
 - [ ] Formatter
 - [ ] Debugger support
-- [ ] Go tools
 - [ ] Markdown support
 - [ ] LaTeX support
 - [ ] Images support
@@ -130,6 +137,6 @@ For example, I use:
 - [ ] Profiler integration
 - [ ] Recursive call detection
 - [ ] DevContainers
-- [ ] Tests runner && Code coverage
+- [ ] Code coverage
 - [ ] Code generation
 
