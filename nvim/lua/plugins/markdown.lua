@@ -21,20 +21,22 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {
+			file_types = { "markdown", "Avante" },
 			code = {
 				sign = false,
+				border = "none",
 				width = "block",
 				right_pad = 1,
 			},
 			heading = {
 				sign = false,
-				icons = {},
+				-- icons = {},
 			},
 			checkbox = {
-				enabled = false,
+				enabled = true,
 			},
 		},
-		ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
+		ft = { "markdown", "Avante" },
 		config = function(_, opts)
 			require("render-markdown").setup(opts)
 			Snacks.toggle({
@@ -51,6 +53,8 @@ return {
 					end
 				end,
 			}):map("<leader>um")
+
+			require("transparent").clear_prefix("RenderMarkdown")
 		end,
 	},
 }

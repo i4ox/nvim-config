@@ -1,10 +1,15 @@
 [window]
 decorations = "Transparent"
 padding = { x = 0, y = 25 }
+opacity = 0.95
+blur = true
 
 [font]
 normal = { family = "JuliaMono Nerd Font", style = "Regular" }
 size = 18
+
+# Colors (Tokyo Night)
+# Source https//github.com/zatchheems/tokyo-night-alacritty-theme
 
 # Default colors
 [colors.primary]

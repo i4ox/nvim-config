@@ -20,6 +20,7 @@ return {
 				{ "<leader>r", group = "refactor" },
 				{ "<leader>q", group = "quit/session" },
 				{ "<leader>s", group = "search" },
+				{ "<leader>t", group = "tests" },
 				{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
 				{ "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
 				{ "[", group = "prev" },

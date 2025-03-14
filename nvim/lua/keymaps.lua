@@ -6,6 +6,9 @@ keymap("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 -- Lazy
 keymap("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
+-- Oil
+keymap("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+
 -- Better Up & Down
 keymap({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 keymap({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -98,6 +101,13 @@ keymap("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 keymap("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 keymap("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
+-- Toggle inlay hints
+keymap("n", "<leader>ch", function()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+	vim.lsp.inlay_hint.enable(not enabled)
+end, { desc = "Toggle Inlay Hints" })
+
 -- Telescope
 keymap("n", "<leader>:", "<cmd>Telescope command_history<cr>", { desc = "Command History" })
 keymap("n", "<leader>fy", "<cmd>Telescope yaml_schema<cr>", { desc = "YAML Schemas" })
@@ -138,6 +148,16 @@ keymap("n", "<leader>dt", "<cmd>lua require('dapui').toggle()<cr>", { noremap = 
 keymap("n", "<leader>db", "<cmd>DapToggleBreakpoint<cr>", { noremap = true, desc = "Toggle Breakpoint" })
 keymap("n", "<leader>dc", "<cmd>DapContinue<cr>", { noremap = true, desc = "Continue" })
 keymap("n", "<leader>dr", "<cmd>lua require('dapui').open({reset = true})<cr>", { noremap = true, desc = "Reset" })
+
+-- Tests
+keymap("n", "<leader>tt", "<cmd>lua require('neotest').run.run()<cr>", { desc = "Run Nearest Test" })
+keymap("n", "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { desc = "Run File" })
+keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", { desc = "Toggle Summary" })
+keymap("n", "<leader>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>", { desc = "Show Output" })
+keymap("n", "<leader>tO", "<cmd>lua require('neotest').output_panel.toggle()<cr>", { desc = "Toggle Output Panel" })
+keymap("n", "<leader>tS", "<cmd>lua require('neotest').run.stop()<cr>", { desc = "Stop" })
+keymap("n", "[t", "<cmd>lua require('neotest').jump.prev({ status = 'failed' })<cr>", { desc = "Previous Failed Test" })
+keymap("n", "]t", "<cmd>lua require('neotest').jump.next({ status = 'failed' })<cr>", { desc = "Next Failed Test" })
 
 -- Hunks
 local gs = require("gitsigns")

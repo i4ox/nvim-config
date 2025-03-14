@@ -76,6 +76,7 @@ return {
 		mason_tool_installer.setup({
 			ensure_installed = {
 				-- Linters and formatters
+				"shellcheck", -- Shell linter
 				"stylua", -- Lua formatter
 				"hadolint", -- Dockerfile linter
 				"gofumpt", -- Golang formatter

@@ -8,6 +8,7 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
+			bash = { "shellcheck" },
 			dockerfile = { "hadolint" },
 			markdown = { "markdownlint-cli2" },
 			go = { "golangcilint" },

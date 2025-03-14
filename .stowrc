@@ -2,6 +2,7 @@
 --ignore=assets
 --ignore=docs
 --ignore=.stowrc
---ignore=install.sh
+--ignore=bin
+--ignore=.DS_Store
 --ignore=.zshrc
 --ignore=README.md
